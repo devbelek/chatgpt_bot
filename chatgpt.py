@@ -3,6 +3,8 @@ import cohere
 import asyncio
 from telegram import Update
 from telegram.ext import Application, CommandHandler, MessageHandler, filters, ContextTypes
+import nest_asyncio
+nest_asyncio.apply()
 
 cohere_api_key = 'pdmEdFBDZqFYH9ljBReMM4VzSPIOwij2bJZNiPwv'
 co = cohere.Client(cohere_api_key)
@@ -50,5 +52,5 @@ async def main():
     )
 
 if __name__ == '__main__':
-    # Используем asyncio.run для запуска основного метода
-    asyncio.run(main())
+    loop = asyncio.get_event_loop()
+    loop.run_until_complete(main())
