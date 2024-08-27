@@ -3,13 +3,15 @@ import cohere
 from telegram import Update
 from telegram.ext import Application, CommandHandler, MessageHandler, filters, ContextTypes
 
+
 cohere_api_key = 'pdmEdFBDZqFYH9ljBReMM4VzSPIOwij2bJZNiPwv'
 co = cohere.Client(cohere_api_key)
 
 telegram_token = '7406870442:AAEcOkcBKC2FOP17s4BuY87UDmAA884NIfI'
+webhook_url = os.getenv('WEBHOOK_URL', 'https://your-app-name.onrender.com/')
+
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    """Отправляет сообщение при команде /start."""
     await update.message.reply_text('Привет! Я бот, использующий Cohere API. Напишите мне что-нибудь, и я отвечу!')
 
 async def generate_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -30,13 +32,24 @@ async def generate_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
         print(f"Произошла ошибка: {e}")
         await update.message.reply_text("Извините, произошла ошибка при обработке вашего запроса.")
 
-def main():
+
+async def main():
     application = Application.builder().token(telegram_token).build()
+
+
+    await application.bot.set_webhook(url=webhook_url)
+
 
     application.add_handler(CommandHandler("start", start))
     application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, generate_text))
 
-    application.run_polling()
+    application.run_webhook(
+        listen="0.0.0.0",
+        port=int(os.environ.get("PORT", 8443)),
+        url_path="",
+        webhook_url=webhook_url
+    )
 
 if __name__ == '__main__':
-    main()
+    import asyncio
+    asyncio.run(main())

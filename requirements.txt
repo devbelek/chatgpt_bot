@@ -36,3 +36,5 @@ tqdm==4.66.5
 types-requests==2.32.0.20240712
 typing_extensions==4.12.2
 urllib3==2.2.2
+python-telegram-bot[webhooks]
+
