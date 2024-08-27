@@ -1,1 +1,1 @@
-python your_bot_file.py
+python chatgpt.py
