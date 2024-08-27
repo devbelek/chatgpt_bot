@@ -19,7 +19,7 @@ async def generate_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
         response = co.generate(
             model='command-xlarge-nightly',
             prompt=user_message,
-            max_tokens=50,
+            max_tokens=300,
             temperature=0.7
         )
         generated_text = response.generations[0].text.strip()
