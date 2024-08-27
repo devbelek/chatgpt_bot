@@ -1,7 +1,8 @@
 import os
 import cohere
 import asyncio
-from telegram import Update, ChatAction
+from telegram import Update
+from telegram.constants import ChatAction
 from telegram.ext import Application, CommandHandler, MessageHandler, filters, ContextTypes
 import nest_asyncio
 
