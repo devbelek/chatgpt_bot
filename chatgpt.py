@@ -1,4 +1,4 @@
-
+import asyncio
 import os
 import cohere
 from telegram import Update
@@ -60,8 +60,8 @@ async def main():
 
     await application.initialize()
     await application.start()
-    await application.run_polling()
+    await application.updater.start_polling()
+    await application.updater.idle()
 
 if __name__ == '__main__':
-    import asyncio
     asyncio.run(main())
