@@ -9,7 +9,7 @@ cohere_api_key = 'pdmEdFBDZqFYH9ljBReMM4VzSPIOwij2bJZNiPwv'
 co = cohere.Client(cohere_api_key)
 
 telegram_token = '7406870442:AAEcOkcBKC2FOP17s4BuY87UDmAA884NIfI'
-webhook_url = os.getenv('WEBHOOK_URL', 'https://chatgpt-bot-wijy.onrender.com/')
+webhook_url = os.getenv('WEBHOOK_URL', 'https://chatgpt-bot-9wty.onrender.com')
 
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
