@@ -6,7 +6,7 @@ from telegram.ext import Application, CommandHandler, MessageHandler, filters, C
 import nest_asyncio
 nest_asyncio.apply()
 
-cohere_api_key = 'pdmEdFBDZqFYH9ljBReMM4VzSPIOwij2bJZNiPwv'
+cohere_api_key = 'v0TqIJO3L0k5J74Jcn6waSWstOqFJHmkG18aOzEi'
 co = cohere.Client(cohere_api_key)
 
 telegram_token = '7406870442:AAEcOkcBKC2FOP17s4BuY87UDmAA884NIfI'
